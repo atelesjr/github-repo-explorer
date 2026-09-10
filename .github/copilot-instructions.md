@@ -203,9 +203,50 @@ Avoid introducing another CSS framework.
 
 Use semantic HTML.
 
-Avoid inline styles unless there is a clear reason.
+Do not use inline styles such as `style={{ fontSize: '26px' }}` for component styling.
 
 Keep custom CSS focused on application-specific styling that Bootstrap does not provide.
+
+# Bootstrap Styling Rules
+
+## 1. Core Rule
+
+Use Bootstrap utility classes directly in the component JSX/TSX.
+
+**Do NOT create custom CSS classes for component styling.**
+
+**Do NOT use inline styles for component styling.**
+
+**Do NOT create component-specific CSS files.**
+
+Do NOT create:
+
+- `.css` files
+- `.scss` files
+- `.module.css` files
+- `.module.scss` files
+
+for individual components.
+
+Styling must remain colocated with the component through Bootstrap classes.
+
+---
+
+## 2. Bootstrap Classes
+
+Prefer Bootstrap classes directly in `className`.
+
+When an exact value is not available, use the closest Bootstrap utility, ask for clarification, or explain the limitation. Do not replace a Bootstrap utility with inline CSS or a new component-specific CSS class without explicit approval.
+
+### Correct
+
+```tsx
+<div className="d-flex align-items-center justify-content-between gap-3 p-3 rounded-3 shadow-sm">
+	...
+</div>
+```
+
+For icon sizes, use Bootstrap utilities such as `fs-1` through `fs-6` directly in `className`.
 
 ## Accessibility
 
