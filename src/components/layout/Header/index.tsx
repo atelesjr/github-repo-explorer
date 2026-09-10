@@ -7,7 +7,7 @@ const Header = () => {
 			style={{ height: '100px' }}
 		>
 			<Logo />
-			<h1>GitHub Repo Explorer</h1>
+			<h1 className="text-white fs-2">GitHub Repo Explorer</h1>
 		</div>
 	);
 };
