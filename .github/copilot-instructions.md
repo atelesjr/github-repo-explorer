@@ -203,7 +203,7 @@ Avoid introducing another CSS framework.
 
 Use semantic HTML.
 
-Do not use inline styles such as `style={{ fontSize: '26px' }}` for component styling.
+Prefer Bootstrap utility classes for component styling. Inline styles are allowed only for local, exact values when Bootstrap has no equivalent utility, such as `style={{ height: '100px' }}` on a component-specific layout element.
 
 Keep custom CSS focused on application-specific styling that Bootstrap does not provide.
 
@@ -215,7 +215,7 @@ Use Bootstrap utility classes directly in the component JSX/TSX.
 
 **Do NOT create custom CSS classes for component styling.**
 
-**Do NOT use inline styles for component styling.**
+**Do NOT use inline styles when an equivalent Bootstrap utility exists.**
 
 **Do NOT create component-specific CSS files.**
 
@@ -236,7 +236,7 @@ Styling must remain colocated with the component through Bootstrap classes.
 
 Prefer Bootstrap classes directly in `className`.
 
-When an exact value is not available, use the closest Bootstrap utility, ask for clarification, or explain the limitation. Do not replace a Bootstrap utility with inline CSS or a new component-specific CSS class without explicit approval.
+When an exact value is not available, use an inline style only for that local value. Do not create a global CSS rule or a component-specific CSS file for it.
 
 ### Correct
 
