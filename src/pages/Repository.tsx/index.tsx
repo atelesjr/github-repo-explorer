@@ -1,7 +1,15 @@
+import { useParams } from 'react-router-dom';
+
 const Repository = () => {
+	const { username, repoName } = useParams<{
+		username: string;
+		repoName: string;
+	}>();
+
 	return (
-		<div>
-			<h1>Repository Page</h1>
+		<div className="py-4">
+			<h1>Repository: {repoName}</h1>
+			<p>User: {username}</p>
 		</div>
 	);
 };

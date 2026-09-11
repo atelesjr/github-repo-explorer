@@ -1,7 +1,11 @@
+import { useParams } from 'react-router-dom';
+
 const User = () => {
+	const { username } = useParams<{ username: string }>();
+
 	return (
-		<div>
-			<h1>User Page</h1>
+		<div className="py-4">
+			<h1>User: {username}</h1>
 		</div>
 	);
 };

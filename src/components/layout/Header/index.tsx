@@ -1,14 +1,20 @@
 import Logo from '../../ui/Logo';
+import UserSearch from '../../user/UserSearch';
 
 const Header = () => {
 	return (
-		<div
-			className="header fixed-top d-flex justify-content-start align-items-center gap-4 bg-black"
-			style={{ height: '100px' }}
+		<header
+			className="header fixed-top d-flex align-items-center bg-black"
+			style={{ height: '100px', padding: '0 10rem' }}
 		>
-			<Logo />
-			<h1 className="text-white fs-2">GitHub Repo Explorer</h1>
-		</div>
+			<div className="d-flex align-items-center gap-4">
+				<Logo />
+				<h1 className="text-white fs-2">GitHub Repo Explorer</h1>
+			</div>
+			<div className="search ms-auto">
+				<UserSearch />
+			</div>
+		</header>
 	);
 };
 
