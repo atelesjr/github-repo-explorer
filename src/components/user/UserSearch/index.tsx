@@ -1,9 +1,9 @@
-import Input from '@/components/ui/Input';
+import InputSearch from '@/components/ui/InputSearch';
 
 const UserSearch = () => {
 	return (
 		<div className="user-search">
-			<Input label="Github User" placeholder="Username" />
+			<InputSearch label="Github User" placeholder="Username" />
 		</div>
 	);
 };
