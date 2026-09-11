@@ -1,11 +1,13 @@
 import Header from './components/layout/Header';
-import Content from './components/layout/Content';
+import AppRoutes from './routes';
 
 function App() {
 	return (
-		<div style={{ paddingLeft: '50px', paddingRight: '50px' }}>
+		<div style={{ paddingLeft: '10rem', paddingRight: '10rem' }}>
 			<Header />
-			<Content />
+			<main style={{ paddingTop: '12rem', minHeight: '100vh' }}>
+				<AppRoutes />
+			</main>
 		</div>
 	);
 }
