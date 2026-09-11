@@ -1,5 +1,5 @@
-import Logo from '../../ui/Logo';
-import UserSearch from '../../user/UserSearch';
+import Logo from '@/components/ui/Logo';
+import UserSearch from '@/components/user/UserSearch';
 
 const Header = () => {
 	return (
