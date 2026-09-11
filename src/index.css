@@ -9,7 +9,6 @@
 	--h2-size: 2.4rem;
 	--h3-size: 2rem;
 	--h4-size: 1.8rem;
-	--form-input-outline: 2px solid #86b7fe;
 }
 
 *,
@@ -89,24 +88,6 @@ textarea,
 select,
 button {
 	font: inherit;
-}
-
-/* Inputs and textareas: clean appearance while maintaining accessibility */
-input,
-textarea {
-	background-color: transparent;
-	border: none;
-	outline: none;
-}
-
-/* Remove outline only for visual displays on non-keyboard devices; maintain accessible focus */
-:focus {
-	outline: none;
-}
-:focus-visible {
-	outline: var(--form-input-outline);
-	outline-offset: 2px;
-	border-radius: 4px;
 }
 
 /* Code / pre */
