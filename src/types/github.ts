@@ -28,3 +28,9 @@ export interface GitHubRepository {
 	pushed_at: string | null;
 	owner: Pick<GitHubUser, 'login' | 'id' | 'avatar_url' | 'html_url'>;
 }
+
+export type RepositorySortOption =
+	| 'stars-desc'
+	| 'stars-asc'
+	| 'name-asc'
+	| 'name-desc';
