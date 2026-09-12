@@ -48,7 +48,9 @@ const InputSearch = ({
 						ariaInvalid={Boolean(error)}
 						onInput={(value) => setHasContent(Boolean(value.trim()))}
 					/>
-					{hasContent && <ButtonClear onClick={clearSearch} disabled={isLoading} />}
+					{hasContent && (
+						<ButtonClear onClick={clearSearch} disabled={isLoading} />
+					)}
 				</div>
 				<ButtonSearch
 					label={isLoading ? 'Searching...' : label}
