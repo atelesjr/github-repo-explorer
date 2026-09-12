@@ -1,3 +1,4 @@
 import ButtonSearch from './Search';
+import ButtonClear from './Clear';
 
-export { ButtonSearch };
+export { ButtonClear, ButtonSearch };
