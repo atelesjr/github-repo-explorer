@@ -5,7 +5,7 @@ import User from './index';
 import { useUserDetails } from './hooks/useUserDetails';
 import type { GitHubUser } from '@/types/github';
 
-vi.mock('./useUserDetails', () => ({
+vi.mock('./hooks/useUserDetails', () => ({
 	useUserDetails: vi.fn(),
 }));
 

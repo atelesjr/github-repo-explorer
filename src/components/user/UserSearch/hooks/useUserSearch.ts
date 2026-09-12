@@ -6,6 +6,7 @@ interface UseUserSearchResult {
 	error: string;
 	isLoading: boolean;
 	searchUser: (username: string) => Promise<void>;
+	reset: () => void;
 }
 
 export const useUserSearch = (): UseUserSearchResult => {
@@ -33,5 +34,9 @@ export const useUserSearch = (): UseUserSearchResult => {
 		}
 	};
 
-	return { error, isLoading, searchUser };
+	const reset = () => {
+		setError('');
+	};
+
+	return { error, isLoading, searchUser, reset };
 };

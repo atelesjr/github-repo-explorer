@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import InputSearch from '@/components/ui/InputSearch';
-import { useUserSearch } from '@/components/user/UserSearch/useUserSearch';
+import { useUserSearch } from '@/components/user/UserSearch/hooks/useUserSearch';
 
 const UserSearch = () => {
 	const navigate = useNavigate();
-	const { error, isLoading, searchUser } = useUserSearch();
+	const { error, isLoading, searchUser, reset } = useUserSearch();
 
 	const handleClear = () => {
+		reset();
 		navigate('/');
 	};
 

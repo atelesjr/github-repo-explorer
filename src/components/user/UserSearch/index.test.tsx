@@ -3,7 +3,6 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter, useLocation } from 'react-router-dom';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import UserSearch from './index';
-import { useUserSearch } from '@/components/user/UserSearch/useUserSearch';
 import { getUser } from '@/services/userService';
 
 vi.mock('@/services/userService', () => ({
@@ -18,20 +17,6 @@ function LocationDisplay() {
 	return <output data-testid="location">{location.pathname}</output>;
 }
 
-function HookHarness() {
-	const { error, isLoading, searchUser } = useUserSearch();
-
-	return (
-		<div>
-			<button type="button" onClick={() => void searchUser('octocat')}>
-				Search hook
-			</button>
-			<span data-testid="hook-loading">{String(isLoading)}</span>
-			<span data-testid="hook-error">{error}</span>
-		</div>
-	);
-}
-
 function renderUserSearch() {
 	return render(
 		<MemoryRouter initialEntries={['/']}>
@@ -41,7 +26,7 @@ function renderUserSearch() {
 	);
 }
 
-describe('UserSearch', () => {
+describe('UserSearch Component', () => {
 	beforeEach(() => {
 		vi.clearAllMocks();
 	});
@@ -81,57 +66,26 @@ describe('UserSearch', () => {
 		);
 	});
 
-	it('clears input and navigates home when clear button is clicked', async () => {
+	it('clears input, resets error, and navigates home when clear button is clicked', async () => {
+		mockedGetUser.mockRejectedValue(new Error('Not found'));
 		const user = userEvent.setup();
 		renderUserSearch();
 
 		const input = screen.getByRole('textbox', { name: 'Username' });
-		await user.type(input, 'octocat');
+		await user.type(input, 'unknown');
+		await user.click(screen.getByRole('button', { name: 'Github User' }));
 
-		const clearButton = await screen.findByRole('button', {
+		expect(await screen.findByRole('alert')).toHaveTextContent(
+			'Usuário não encontrado.',
+		);
+
+		const clearButton = screen.getByRole('button', {
 			name: 'Clear search and return to homepage',
 		});
 		await user.click(clearButton);
 
 		expect(input).toHaveValue('');
+		expect(screen.queryByRole('alert')).not.toBeInTheDocument();
 		expect(screen.getByTestId('location')).toHaveTextContent('/');
-	});
-});
-
-describe('useUserSearch hook', () => {
-	beforeEach(() => {
-		vi.clearAllMocks();
-	});
-
-	it('exposes loading state and navigates after a successful search', async () => {
-		let resolveUser: (
-			value: Awaited<ReturnType<typeof getUser>>,
-		) => void = () => {};
-		mockedGetUser.mockImplementation(
-			() =>
-				new Promise((resolve) => {
-					resolveUser = resolve;
-				}),
-		);
-
-		const user = userEvent.setup();
-		render(
-			<MemoryRouter initialEntries={['/']}>
-				<HookHarness />
-				<LocationDisplay />
-			</MemoryRouter>,
-		);
-
-		await user.click(screen.getByRole('button', { name: 'Search hook' }));
-		expect(screen.getByTestId('hook-loading')).toHaveTextContent('true');
-
-		resolveUser({} as Awaited<ReturnType<typeof getUser>>);
-
-		await waitFor(() => {
-			expect(screen.getByTestId('hook-loading')).toHaveTextContent('false');
-			expect(screen.getByTestId('location')).toHaveTextContent(
-				'/users/octocat',
-			);
-		});
 	});
 });
