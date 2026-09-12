@@ -9,6 +9,7 @@ export interface GitHubUser {
 	followers: number;
 	following: number;
 	html_url: string;
+	email?: string | null;
 }
 
 export interface GitHubRepository {
