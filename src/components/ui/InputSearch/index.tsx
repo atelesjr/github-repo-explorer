@@ -1,26 +1,34 @@
 import { useRef, useState, type FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ButtonClear, ButtonSearch } from '@/components/ui/Buttons/index';
 import Input from '@/components/ui/Input';
-import { useUserSearch } from '@/components/ui/InputSearch/hooks/useUserSearch';
 
-interface InputSearchProps {
+export interface InputSearchProps {
 	label?: string;
 	placeholder?: string;
+	id?: string;
+	formAriaLabel?: string;
+	isLoading?: boolean;
+	error?: string;
+	onSearch: (value: string) => void;
+	onClear?: () => void;
 }
 
 const InputSearch = ({
-	label = 'Label',
+	label = 'Search',
 	placeholder = 'Placeholder',
+	id = 'search-input',
+	formAriaLabel = 'Search',
+	isLoading = false,
+	error,
+	onSearch,
+	onClear,
 }: InputSearchProps) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const [hasContent, setHasContent] = useState(false);
-	const navigate = useNavigate();
-	const { error, isLoading, searchUser } = useUserSearch();
 
 	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		void searchUser(inputRef.current?.value ?? '');
+		onSearch(inputRef.current?.value ?? '');
 	};
 
 	const clearSearch = () => {
@@ -30,12 +38,14 @@ const InputSearch = ({
 			setHasContent(false);
 		}
 
-		navigate('/');
+		onClear?.();
 	};
 
+	const errorId = error ? `${id}-error` : undefined;
+
 	return (
-		<form onSubmit={handleSubmit} aria-label="Search GitHub user">
-			<label htmlFor="github-username" className="visually-hidden">
+		<form onSubmit={handleSubmit} aria-label={formAriaLabel}>
+			<label htmlFor={id} className="visually-hidden">
 				{placeholder}
 			</label>
 			<div className="input-group mb-0" data-bs-theme="dark">
@@ -43,8 +53,8 @@ const InputSearch = ({
 					<Input
 						placeholder={placeholder}
 						inputRef={inputRef}
-						id="github-username"
-						ariaDescribedBy={error ? 'github-search-error' : undefined}
+						id={id}
+						ariaDescribedBy={errorId}
 						ariaInvalid={Boolean(error)}
 						onInput={(value) => setHasContent(Boolean(value.trim()))}
 					/>
@@ -59,7 +69,7 @@ const InputSearch = ({
 			</div>
 			{error && (
 				<div
-					id="github-search-error"
+					id={errorId}
 					className="small text-danger mt-1"
 					role="alert"
 				>
