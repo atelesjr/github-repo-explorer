@@ -16,7 +16,7 @@ const RepositoryCard = ({ repo, username }: RepositoryCardProps) => {
 		>
 			<div className="card-body p-3 d-flex flex-column gap-2">
 				<div className="d-flex align-items-center justify-content-between gap-2">
-					<h3 className="h5 card-title mb-0 text-break">
+					<h3 className="h5 card-title mb-0 text-break fs-4 fs-md-3 fs-lg-1">
 						<Link
 							to={repoDetailsPath}
 							className="text-decoration-none text-primary fw-bold"
