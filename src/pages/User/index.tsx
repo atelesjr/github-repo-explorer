@@ -10,9 +10,18 @@ import type { RepositorySortOption } from '@/types/github';
 
 const User = () => {
 	const { username } = useParams<{ username: string }>();
-	const { user, isLoading: isLoadingUser, error: userError } = useUserDetails(username);
-	const { repos, isLoading: isLoadingRepos, error: reposError } = useUserRepos(username);
-	const [sortOption, setSortOption] = useState<RepositorySortOption>('stars-desc');
+	const {
+		user,
+		isLoading: isLoadingUser,
+		error: userError,
+	} = useUserDetails(username);
+	const {
+		repos,
+		isLoading: isLoadingRepos,
+		error: reposError,
+	} = useUserRepos(username);
+	const [sortOption, setSortOption] =
+		useState<RepositorySortOption>('stars-desc');
 
 	if (isLoadingUser) {
 		return (
@@ -37,10 +46,10 @@ const User = () => {
 	return (
 		<div className="py-4">
 			<div className="row g-4">
-				<div className="col-12 col-md-4 col-lg-3">
+				<div className="col-12 col-xl-3">
 					<UserCard user={user} />
 				</div>
-				<div className="col-12 col-md-8 col-lg-9">
+				<div className="col-12 col-xl-9">
 					<section aria-label="Repositories">
 						<div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 pb-2 border-bottom border-secondary">
 							<h2 className="h3 text-white mb-0 d-flex align-items-center gap-2">

@@ -3,7 +3,7 @@ import AppRoutes from './routes';
 
 function App() {
 	return (
-		<div style={{ paddingLeft: '10rem', paddingRight: '10rem' }}>
+		<div className="container">
 			<Header />
 			<main style={{ paddingTop: '12rem', minHeight: '100vh' }}>
 				<AppRoutes />

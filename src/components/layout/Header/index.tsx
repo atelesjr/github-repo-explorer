@@ -9,7 +9,7 @@ const Header = () => {
 		>
 			<div className="d-flex align-items-center gap-4">
 				<Logo />
-				<h1 className="text-white fs-2">GitHub Repo Explorer</h1>
+				<h1 className="text-white fs-2 fs-md-5">GitHub Repo Explorer</h1>
 			</div>
 			<div className="search ms-auto">
 				<UserSearch />

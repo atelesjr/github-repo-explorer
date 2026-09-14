@@ -1,33 +1,19 @@
-import { getUser } from '@/services/userService';
-import { getRepoDetails } from '@/services/repoDetailsService';
-import { useEffect } from 'react';
-import { getUserRepos } from '@/services/userReposService';
-
 const Home = () => {
-	const getUserDetails = async () => {
-		const userData = await getUser('atelesjr');
-		console.log('User Data:', userData);
-	};
-
-	const getUserRepositories = async () => {
-		const repos = await getUserRepos('atelesjr');
-		console.log('User Repos:', repos);
-	};
-
-	const getRepositoryDetails = async () => {
-		const repoDetails = await getRepoDetails('atelesjr/github-repo-explorer');
-		console.log('Repo Details:', repoDetails);
-	};
-
-	useEffect(() => {
-		getUserDetails();
-		getUserRepositories();
-		getRepositoryDetails();
-	}, []);
-
 	return (
-		<div>
-			<h1>Home Page</h1>
+		<div className="py-5 text-center">
+			<h1 className="display-5 fw-bold text-white mb-5">
+				Explore GitHub Users &amp; Repositories
+			</h1>
+			<p
+				className="lead text-secondary mx-auto fs-2 mb-5"
+				style={{ maxWidth: '640px' }}
+			>
+				Search for a GitHub user, explore their repositories, compare repository
+				popularity by stars, and view detailed repository information.
+			</p>
+			<p className="text-secondary fs-3">
+				Enter a GitHub username above to get started.
+			</p>
 		</div>
 	);
 };
