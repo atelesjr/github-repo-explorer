@@ -9,7 +9,7 @@
 	--h2-size: 2.4rem;
 	--h3-size: 2rem;
 	--h4-size: 1.8rem;
-	--app-horizontal-padding: 2rem;
+	--app-horizontal-padding: 10rem;
 }
 
 @media (min-width: 1024px) {
