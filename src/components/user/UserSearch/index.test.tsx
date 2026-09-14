@@ -37,10 +37,10 @@ describe('UserSearch Component', () => {
 		renderUserSearch();
 
 		await user.type(
-			screen.getByRole('textbox', { name: 'Username' }),
+			screen.getByRole('textbox', { name: 'GitHub Username' }),
 			'octocat',
 		);
-		await user.click(screen.getByRole('button', { name: 'Github User' }));
+		await user.click(screen.getByRole('button', { name: 'Search User' }));
 
 		await waitFor(() => {
 			expect(mockedGetUser).toHaveBeenCalledWith('octocat');
@@ -56,10 +56,10 @@ describe('UserSearch Component', () => {
 		renderUserSearch();
 
 		await user.type(
-			screen.getByRole('textbox', { name: 'Username' }),
+			screen.getByRole('textbox', { name: 'GitHub Username' }),
 			'unknown',
 		);
-		await user.click(screen.getByRole('button', { name: 'Github User' }));
+		await user.click(screen.getByRole('button', { name: 'Search User' }));
 
 		expect(await screen.findByRole('alert')).toHaveTextContent(
 			'Usuário não encontrado.',
@@ -71,9 +71,9 @@ describe('UserSearch Component', () => {
 		const user = userEvent.setup();
 		renderUserSearch();
 
-		const input = screen.getByRole('textbox', { name: 'Username' });
+		const input = screen.getByRole('textbox', { name: 'GitHub Username' });
 		await user.type(input, 'unknown');
-		await user.click(screen.getByRole('button', { name: 'Github User' }));
+		await user.click(screen.getByRole('button', { name: 'Search User' }));
 
 		expect(await screen.findByRole('alert')).toHaveTextContent(
 			'Usuário não encontrado.',

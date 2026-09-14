@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import UserCard from '@/components/user/UserCard';
 import RepositoryList from '@/components/repository/RepositoryList';
@@ -10,9 +10,23 @@ import type { RepositorySortOption } from '@/types/github';
 
 const User = () => {
 	const { username } = useParams<{ username: string }>();
-	const { user, isLoading: isLoadingUser, error: userError } = useUserDetails(username);
-	const { repos, isLoading: isLoadingRepos, error: reposError } = useUserRepos(username);
-	const [sortOption, setSortOption] = useState<RepositorySortOption>('stars-desc');
+	const {
+		user,
+		isLoading: isLoadingUser,
+		error: userError,
+	} = useUserDetails(username);
+	const {
+		repos,
+		isLoading: isLoadingRepos,
+		error: reposError,
+	} = useUserRepos(username);
+	const [sortOption, setSortOption] =
+		useState<RepositorySortOption>('stars-desc');
+
+	useEffect(() => {
+		console.log('userError', userError);
+		console.log('user', user);
+	}, [userError, user]);
 
 	if (isLoadingUser) {
 		return (

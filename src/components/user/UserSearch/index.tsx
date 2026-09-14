@@ -14,8 +14,8 @@ const UserSearch = () => {
 	return (
 		<div className="user-search">
 			<InputSearch
-				label="Github User"
-				placeholder="Username"
+				label="Search User"
+				placeholder="GitHub Username"
 				id="github-username"
 				formAriaLabel="Search GitHub user"
 				isLoading={isLoading}

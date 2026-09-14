@@ -51,7 +51,7 @@ describe('UserCard', () => {
 		expect(emailLink).toHaveAttribute('href', 'mailto:octocat@github.com');
 
 		const profileLink = screen.getByRole('link', {
-			name: 'Ver perfil no GitHub',
+			name: 'GitHub Profile',
 		});
 		expect(profileLink).toHaveAttribute('href', 'https://github.com/octocat');
 		expect(profileLink).toHaveAttribute('target', '_blank');

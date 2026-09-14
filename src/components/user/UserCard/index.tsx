@@ -25,7 +25,7 @@ const UserCard = ({ user }: UserCardProps) => {
 					<h2 className="h4 fw-bold mb-0 text-white">
 						{user.name ?? user.login}
 					</h2>
-					<p className="fs-6 text-secondary mb-0">@{user.login}</p>
+					<p className="fs-4 text-secondary-emphasis mb-0">@{user.login}</p>
 				</div>
 
 				{/* Bio */}
@@ -38,12 +38,12 @@ const UserCard = ({ user }: UserCardProps) => {
 					<i className="bi bi-people fs-6" aria-hidden="true"></i>
 					<span>
 						<strong className="text-white">{user.followers}</strong>{' '}
-						<span className="text-secondary">seguidores</span>
+						<span className="text-secondary">followers</span>
 					</span>
 					<span>·</span>
 					<span>
 						<strong className="text-white">{user.following}</strong>{' '}
-						<span className="text-secondary">seguindo</span>
+						<span className="text-secondary">following</span>
 					</span>
 				</div>
 
@@ -76,7 +76,7 @@ const UserCard = ({ user }: UserCardProps) => {
 							rel="noopener noreferrer"
 							className="text-decoration-none text-primary"
 						>
-							Ver perfil no GitHub
+							GitHub Profile
 						</a>
 					</li>
 				</ul>
