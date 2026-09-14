@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import UserCard from '@/components/user/UserCard';
 import RepositoryList from '@/components/repository/RepositoryList';
@@ -23,11 +23,6 @@ const User = () => {
 	const [sortOption, setSortOption] =
 		useState<RepositorySortOption>('stars-desc');
 
-	useEffect(() => {
-		console.log('userError', userError);
-		console.log('user', user);
-	}, [userError, user]);
-
 	if (isLoadingUser) {
 		return (
 			<div className="d-flex justify-content-center py-5">
@@ -51,10 +46,10 @@ const User = () => {
 	return (
 		<div className="py-4">
 			<div className="row g-4">
-				<div className="col-12 col-md-4 col-lg-3">
+				<div className="col-12 col-xl-3">
 					<UserCard user={user} />
 				</div>
-				<div className="col-12 col-md-8 col-lg-9">
+				<div className="col-12 col-xl-9">
 					<section aria-label="Repositories">
 						<div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 pb-2 border-bottom border-secondary">
 							<h2 className="h3 text-white mb-0 d-flex align-items-center gap-2">

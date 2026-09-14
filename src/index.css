@@ -9,6 +9,19 @@
 	--h2-size: 2.4rem;
 	--h3-size: 2rem;
 	--h4-size: 1.8rem;
+	--app-horizontal-padding: 2rem;
+}
+
+@media (min-width: 1024px) {
+	:root {
+		--app-horizontal-padding: 5rem;
+	}
+}
+
+@media (min-width: 768px) {
+	:root {
+		--app-horizontal-padding: 2.5rem;
+	}
 }
 
 *,
@@ -110,4 +123,39 @@ hr {
 	border: 0;
 	height: 1px;
 	/* background-color: theme('colors.gray.200'); */
+}
+
+.container {
+	padding-left: var(--app-horizontal-padding);
+	padding-right: var(--app-horizontal-padding);
+}
+
+.main-content {
+	padding-left: var(--app-horizontal-padding);
+	padding-right: var(--app-horizontal-padding);
+}
+
+.logo-img {
+	width: 100%;
+	height: 100%;
+}
+
+@media (min-width: 1024px) {
+	.logo-img {
+		width: 25%;
+		height: 25%;
+	}
+}
+
+@media (min-width: 768px) {
+	.logo-img {
+		width: 25%;
+		height: 25%;
+	}
+}
+
+.user-details {
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
 }
