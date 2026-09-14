@@ -142,18 +142,20 @@ describe('User Page', () => {
 		renderUserPage();
 
 		await waitFor(() => {
-			expect(screen.getByRole('heading', { level: 2, name: 'The Octocat' })).toBeInTheDocument();
+			expect(
+				screen.getByRole('heading', { level: 2, name: 'The Octocat' }),
+			).toBeInTheDocument();
 		});
 
 		const userCardColumn = screen
 			.getByRole('heading', { level: 2, name: 'The Octocat' })
 			.closest('.col-12');
-		expect(userCardColumn).toHaveClass('col-md-4');
+		expect(userCardColumn).toHaveClass('col-xl-3');
 
 		const repoSectionColumn = screen
 			.getByRole('region', { name: 'Repositories' })
 			.closest('.col-12');
-		expect(repoSectionColumn).toHaveClass('col-md-8');
+		expect(repoSectionColumn).toHaveClass('col-xl-9');
 	});
 
 	it('defaults to "Most stars" sorting and displays repository details', async () => {
@@ -163,7 +165,9 @@ describe('User Page', () => {
 		renderUserPage();
 
 		await waitFor(() => {
-			expect(screen.getByRole('heading', { level: 2, name: 'The Octocat' })).toBeInTheDocument();
+			expect(
+				screen.getByRole('heading', { level: 2, name: 'The Octocat' }),
+			).toBeInTheDocument();
 		});
 
 		const sortSelect = screen.getByRole('combobox', {
@@ -188,7 +192,9 @@ describe('User Page', () => {
 		renderUserPage();
 
 		await waitFor(() => {
-			expect(screen.getByRole('heading', { level: 2, name: 'The Octocat' })).toBeInTheDocument();
+			expect(
+				screen.getByRole('heading', { level: 2, name: 'The Octocat' }),
+			).toBeInTheDocument();
 		});
 
 		expect(mockedGetUserRepos).toHaveBeenCalledTimes(1);
